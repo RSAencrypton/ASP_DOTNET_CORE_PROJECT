@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "mXG8LqUHsj0DhO9N1ZlAU87OQwij0AaqFaDcNd/4g1I=",
+  "Source": "ASP_DOTNET_CORE_WEB_API",
+  "BasePath": "_content/ASP_DOTNET_CORE_WEB_API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

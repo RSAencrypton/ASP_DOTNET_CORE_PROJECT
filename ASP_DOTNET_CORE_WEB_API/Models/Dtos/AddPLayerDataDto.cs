@@ -1,10 +1,7 @@
-﻿using ASP_DOTNET_CORE_WEB_API.Models.Dtos;
-
-namespace ASP_DOTNET_CORE_WEB_API.Models.Domain
+﻿namespace ASP_DOTNET_CORE_WEB_API.Models.Dtos
 {
-    public class PlayerData
+    public class AddPLayerDataDto
     {
-        public Guid Id { get; set; }
         public string Name { get; set; }
         public int Level { get; set; }
         public int Exp { get; set; }

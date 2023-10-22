@@ -74,3 +74,5 @@ D:\project\ASP_DOTNET_CORE_PROJECT\ASP_DOTNET_CORE_WEB_API\bin\Debug\net7.0\runt
 D:\project\ASP_DOTNET_CORE_PROJECT\ASP_DOTNET_CORE_WEB_API\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
 D:\project\ASP_DOTNET_CORE_PROJECT\ASP_DOTNET_CORE_WEB_API\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 D:\project\ASP_DOTNET_CORE_PROJECT\ASP_DOTNET_CORE_WEB_API\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+D:\project\ASP_DOTNET_CORE_PROJECT\ASP_DOTNET_CORE_WEB_API\bin\Debug\net7.0\AutoMapper.dll
+D:\project\ASP_DOTNET_CORE_PROJECT\ASP_DOTNET_CORE_WEB_API\bin\Debug\net7.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ASP_DOTNET_CORE_WEB_API.Migrations
 {
     [DbContext(typeof(PlayerDBContext))]
-    [Migration("20231021050950_Initial Migration")]
-    partial class InitialMigration
+    [Migration("20231022084307_rebuild")]
+    partial class rebuild
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -38,10 +38,7 @@ namespace ASP_DOTNET_CORE_WEB_API.Migrations
                     b.Property<Guid>("PersonalDataID")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("PlayerDataIDs")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("PlayerDatasId")
+                    b.Property<Guid>("PlayerDataID")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("UserAccount")
@@ -52,9 +49,9 @@ namespace ASP_DOTNET_CORE_WEB_API.Migrations
 
                     b.HasIndex("PersonalDataID");
 
-                    b.HasIndex("PlayerDatasId");
+                    b.HasIndex("PlayerDataID");
 
-                    b.ToTable("accountDatas");
+                    b.ToTable("AccountDatas");
                 });
 
             modelBuilder.Entity("ASP_DOTNET_CORE_WEB_API.Models.Domain.PersonalData", b =>
@@ -71,7 +68,7 @@ namespace ASP_DOTNET_CORE_WEB_API.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("personalDatas");
+                    b.ToTable("PersonalDatas");
                 });
 
             modelBuilder.Entity("ASP_DOTNET_CORE_WEB_API.Models.Domain.PlayerData", b =>
@@ -95,7 +92,7 @@ namespace ASP_DOTNET_CORE_WEB_API.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("playerDatas");
+                    b.ToTable("PlayerDatas");
                 });
 
             modelBuilder.Entity("ASP_DOTNET_CORE_WEB_API.Models.Domain.AccountData", b =>
@@ -106,15 +103,15 @@ namespace ASP_DOTNET_CORE_WEB_API.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ASP_DOTNET_CORE_WEB_API.Models.Domain.PlayerData", "PlayerDatas")
+                    b.HasOne("ASP_DOTNET_CORE_WEB_API.Models.Domain.PlayerData", "PlayerData")
                         .WithMany()
-                        .HasForeignKey("PlayerDatasId")
+                        .HasForeignKey("PlayerDataID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("PersonalData");
 
-                    b.Navigation("PlayerDatas");
+                    b.Navigation("PlayerData");
                 });
 #pragma warning restore 612, 618
         }

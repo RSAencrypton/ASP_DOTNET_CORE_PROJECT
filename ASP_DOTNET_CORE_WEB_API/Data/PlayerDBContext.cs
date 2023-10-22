@@ -9,8 +9,8 @@ namespace ASP_DOTNET_CORE_WEB_API.Data
         {
         }
 
-        public DbSet<AccountData> accountDatas { get; set; }
-        public DbSet<PlayerData> playerDatas { get; set; }
-        public DbSet<PersonalData> personalDatas { get; set; }
+        public DbSet<AccountData> AccountDatas { get; set; }
+        public DbSet<PlayerData> PlayerDatas { get; set; }
+        public DbSet<PersonalData> PersonalDatas { get; set; }
     }
 }

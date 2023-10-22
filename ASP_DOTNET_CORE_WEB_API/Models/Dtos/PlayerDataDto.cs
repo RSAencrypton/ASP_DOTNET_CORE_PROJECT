@@ -11,22 +11,5 @@ namespace ASP_DOTNET_CORE_WEB_API.Models.Dtos
         public int Money { get; set; }
 
         public PlayerDataDto() { }
-
-        public PlayerDataDto(Guid id, string name, int level, int exp, int money)
-        {
-            Id = id;
-            Name = name;
-            Level = level;
-            Exp = exp;
-            Money = money;
-        }
-
-        public PlayerDataDto(PlayerData item) {
-            Id = item.Id;
-            Name = item.Name;
-            Level = item.Level;
-            Exp = item.Exp;
-            Money = item.Money;
-        }
     }
 }

@@ -6,13 +6,13 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ASP_DOTNET_CORE_WEB_API.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialMigration : Migration
+    public partial class rebuild : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "personalDatas",
+                name: "PersonalDatas",
                 columns: table => new
                 {
                     id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -21,11 +21,11 @@ namespace ASP_DOTNET_CORE_WEB_API.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_personalDatas", x => x.id);
+                    table.PrimaryKey("PK_PersonalDatas", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "playerDatas",
+                name: "PlayerDatas",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -36,59 +36,58 @@ namespace ASP_DOTNET_CORE_WEB_API.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_playerDatas", x => x.Id);
+                    table.PrimaryKey("PK_PlayerDatas", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "accountDatas",
+                name: "AccountDatas",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     UserAccount = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PersonalDataID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    PlayerDataIDs = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    PlayerDatasId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    PlayerDataID = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_accountDatas", x => x.Id);
+                    table.PrimaryKey("PK_AccountDatas", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_accountDatas_personalDatas_PersonalDataID",
+                        name: "FK_AccountDatas_PersonalDatas_PersonalDataID",
                         column: x => x.PersonalDataID,
-                        principalTable: "personalDatas",
+                        principalTable: "PersonalDatas",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_accountDatas_playerDatas_PlayerDatasId",
-                        column: x => x.PlayerDatasId,
-                        principalTable: "playerDatas",
+                        name: "FK_AccountDatas_PlayerDatas_PlayerDataID",
+                        column: x => x.PlayerDataID,
+                        principalTable: "PlayerDatas",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_accountDatas_PersonalDataID",
-                table: "accountDatas",
+                name: "IX_AccountDatas_PersonalDataID",
+                table: "AccountDatas",
                 column: "PersonalDataID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_accountDatas_PlayerDatasId",
-                table: "accountDatas",
-                column: "PlayerDatasId");
+                name: "IX_AccountDatas_PlayerDataID",
+                table: "AccountDatas",
+                column: "PlayerDataID");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "accountDatas");
+                name: "AccountDatas");
 
             migrationBuilder.DropTable(
-                name: "personalDatas");
+                name: "PersonalDatas");
 
             migrationBuilder.DropTable(
-                name: "playerDatas");
+                name: "PlayerDatas");
         }
     }
 }

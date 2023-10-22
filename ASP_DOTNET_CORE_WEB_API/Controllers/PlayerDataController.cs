@@ -1,6 +1,8 @@
 ﻿using ASP_DOTNET_CORE_WEB_API.Data;
 using ASP_DOTNET_CORE_WEB_API.Models.Domain;
 using ASP_DOTNET_CORE_WEB_API.Models.Dtos;
+using ASP_DOTNET_CORE_WEB_API.Repositories.IRepositoriesInterface;
+using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -11,22 +13,22 @@ namespace ASP_DOTNET_CORE_WEB_API.Controllers
     [ApiController]
     public class PlayerDataController : ControllerBase
     {
-        public readonly PlayerDBContext dbContext;
+        private readonly PlayerDBContext dbContext;
+        private readonly IPLayerDataRepositories pLayerDataRepositories;
+        private readonly IMapper mapper;
 
-        public PlayerDataController(PlayerDBContext playerDBContext) {
+        public PlayerDataController(PlayerDBContext playerDBContext, IPLayerDataRepositories pLayerDataRepositories, IMapper mapper) {
             dbContext = playerDBContext;
+            this.pLayerDataRepositories = pLayerDataRepositories;
+            this.mapper = mapper;
         }
 
         //Get All Player Data
         [HttpGet]
-        public IActionResult GetAll() {
-            var PlayerDatas = dbContext.playerDatas.ToList();
-            List<PlayerDataDto> Dtos = new();
+        public async Task<IActionResult> GetAll() {
+            var PlayerDatas = await pLayerDataRepositories.GetAllPlayerDataAsync();
 
-            foreach (var item in PlayerDatas)
-            {
-                Dtos.Add(new PlayerDataDto(item));
-            }
+            var Dtos = mapper.Map<List<PlayerDataDto>>(PlayerDatas);
 
             return Ok(Dtos);
         }
@@ -34,60 +36,49 @@ namespace ASP_DOTNET_CORE_WEB_API.Controllers
         //Get Single Player Data
         [HttpGet]
         [Route("{id:Guid}")]
-        public IActionResult GetByID([FromRoute] Guid id) {
-            var item = dbContext.playerDatas.Find(id);
+        public async Task<IActionResult> GetByID([FromRoute] Guid id) {
+            var item = pLayerDataRepositories.GetSinglePlayerDataAsync(id);
 
             if (item == null) {
                 return NotFound();
             }
 
-            PlayerDataDto Dto = new PlayerDataDto(item);
+            PlayerDataDto Dto = mapper.Map<PlayerDataDto>(item.Result);
 
             return Ok(Dto);
         }
 
         [HttpPost]
-        public IActionResult CreatePlayerData([FromBody] PlayerDataDto item) {
-            PlayerData playerData = new PlayerData(item);
+        public async Task<IActionResult> CreatePlayerData([FromBody] AddPLayerDataDto item) {
+            PlayerData playerData = mapper.Map<PlayerData>(item);
 
-            dbContext.playerDatas.Add(playerData);
-            dbContext.SaveChanges();
+            await pLayerDataRepositories.CreatePlayerDataAsync(playerData);
 
-            PlayerDataDto Dto = new PlayerDataDto(playerData);
+            PlayerDataDto Dto = mapper.Map<PlayerDataDto>(playerData);
 
             return CreatedAtAction(nameof(GetByID), new { id = Dto.Id}, Dto);
         }
 
         [HttpPut]
         [Route("{id:Guid}")]
-        public IActionResult UpdatePlayerData([FromRoute] Guid id, [FromBody] PlayerDataDto Dto) {
-            PlayerData item = null;
+        public async Task<IActionResult> UpdatePlayerData([FromRoute] Guid id, [FromBody] PlayerDataDto Dto) {
+            PlayerData item = await pLayerDataRepositories.UpdatePlayerDataAsync(id, Dto);
 
-            if (!CanFindPlayerDataById(id, out item)) return NotFound();
+            if (item == null) return NotFound();
 
-            item.UpdateData(Dto);
-            dbContext.SaveChanges();
-
-            Dto = new PlayerDataDto(item);
+            Dto = mapper.Map<PlayerDataDto>(item);
 
             return Ok(Dto);
         }
 
         [HttpDelete]
         [Route("{id:Guid}")]
-        public IActionResult DeletePlayerData([FromRoute] Guid id) {
-            PlayerData item = null;
-            if (!CanFindPlayerDataById(id, out item)) return NotFound();
+        public async Task<IActionResult> DeletePlayerData([FromRoute] Guid id) {
+            PlayerData item = await pLayerDataRepositories.DeletePlayerDataAsync(id);
+            if (item == null) return NotFound();
 
-            dbContext.playerDatas.Remove(item);
-            dbContext.SaveChanges();
-
-            return Ok();
+            return item == null ? NotFound() : Ok();
         }
 
-        private bool CanFindPlayerDataById(Guid id, out PlayerData item) {
-            item = dbContext.playerDatas.Find(id);
-            return item != null;
-        }
     }
 }

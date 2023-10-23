@@ -29,5 +29,13 @@ namespace ASP_DOTNET_CORE_WEB_API.Controllers
 
             return Ok(mapper.Map<AccountDto>(data));
         }
+
+        [HttpGet]
+        public async Task<IActionResult> SearchAllAccountDataAsync() {
+            var DomainData = await dataRepositories.SearchAllAccountDataAsync();
+            var items = mapper.Map<List<AccountDto>>(DomainData);
+
+            return Ok(items);
+        }
     }
 }

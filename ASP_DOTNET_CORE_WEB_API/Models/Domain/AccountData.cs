@@ -1,4 +1,6 @@
-﻿namespace ASP_DOTNET_CORE_WEB_API.Models.Domain
+﻿using ASP_DOTNET_CORE_WEB_API.Models.Dtos;
+
+namespace ASP_DOTNET_CORE_WEB_API.Models.Domain
 {
     public class AccountData
     {

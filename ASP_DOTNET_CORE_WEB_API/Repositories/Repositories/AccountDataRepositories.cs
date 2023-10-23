@@ -3,6 +3,7 @@ using ASP_DOTNET_CORE_WEB_API.Models.Domain;
 using ASP_DOTNET_CORE_WEB_API.Models.Dtos;
 using ASP_DOTNET_CORE_WEB_API.Repositories.IRepositoriesInterface;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace ASP_DOTNET_CORE_WEB_API.Repositories.Repositories
 {
@@ -20,6 +21,10 @@ namespace ASP_DOTNET_CORE_WEB_API.Repositories.Repositories
             await dBContext.SaveChangesAsync();
 
             return item;
+        }
+
+        public async Task<List<AccountData>> SearchAllAccountDataAsync() {
+            return await dBContext.AccountDatas.Include(x=>x.PlayerData).Include(x=>x.PersonalData).ToListAsync();
         }
 
         public Task<AccountData> DeleteAccountAsync(Guid id)

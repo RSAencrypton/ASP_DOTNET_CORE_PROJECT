@@ -6,7 +6,7 @@
         public string UserAccount { get; set; }
         public string Password { get; set; }
 
-        public Guid PersonalDataID { get; set; }
-        public Guid PlayerDataID { get; set; }
+        public PersonalDataDto PersonalData { get; set; }
+        public PlayerDataDto PlayerData { get; set; }
     }
 }

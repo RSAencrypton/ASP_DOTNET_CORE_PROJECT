@@ -1,11 +1,12 @@
 ﻿using ASP_DOTNET_CORE_WEB_API.Models.Domain;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace ASP_DOTNET_CORE_WEB_API.Data
 {
     public class PlayerDBContext : DbContext
     {
-        public PlayerDBContext(DbContextOptions dbContextOptions) : base(dbContextOptions)
+        public PlayerDBContext(DbContextOptions<PlayerDBContext> dbContextOptions) : base(dbContextOptions)
         {
         }
 

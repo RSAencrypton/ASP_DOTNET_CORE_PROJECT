@@ -4,6 +4,7 @@ using ASP_DOTNET_CORE_WEB_API.Models.Dtos;
 using AutoMapper;
 using ASP_DOTNET_CORE_WEB_API.Repositories.IRepositoriesInterface;
 using ASP_DOTNET_CORE_WEB_API.Models.Domain;
+using Microsoft.AspNetCore.Identity;
 
 namespace ASP_DOTNET_CORE_WEB_API.Controllers
 {
@@ -17,12 +18,14 @@ namespace ASP_DOTNET_CORE_WEB_API.Controllers
         public AccountController(IMapper mapper, IAccountDataRepositories dataRepositories) {
             this.mapper = mapper;
             this.dataRepositories = dataRepositories;
+
         }
 
 
 
+
         [HttpPost]
-        public async Task<IActionResult> CreateAccountAsync([FromBody] AccountDto item) {
+        public async Task<IActionResult> CreateAccountAsync([FromBody] AddAccountDto item) {
             var data = mapper.Map<AccountData>(item);
 
             await dataRepositories.CreateAccountAsync(data);

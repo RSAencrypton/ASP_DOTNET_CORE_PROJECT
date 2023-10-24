@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ASP_DOTNET_CORE_WEB_API.Migrations
 {
     /// <inheritdoc />
-    public partial class rebuild : Migration
+    public partial class Addanewattributeintoaccountdata : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -15,13 +15,13 @@ namespace ASP_DOTNET_CORE_WEB_API.Migrations
                 name: "PersonalDatas",
                 columns: table => new
                 {
-                    id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    phone = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    email = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    phone = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    email = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PersonalDatas", x => x.id);
+                    table.PrimaryKey("PK_PersonalDatas", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -46,6 +46,7 @@ namespace ASP_DOTNET_CORE_WEB_API.Migrations
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     UserAccount = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Role = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PersonalDataID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     PlayerDataID = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
@@ -56,7 +57,7 @@ namespace ASP_DOTNET_CORE_WEB_API.Migrations
                         name: "FK_AccountDatas_PersonalDatas_PersonalDataID",
                         column: x => x.PersonalDataID,
                         principalTable: "PersonalDatas",
-                        principalColumn: "id",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_AccountDatas_PlayerDatas_PlayerDataID",

@@ -3,6 +3,7 @@ using ASP_DOTNET_CORE_WEB_API.Models.Domain;
 using ASP_DOTNET_CORE_WEB_API.Models.Dtos;
 using ASP_DOTNET_CORE_WEB_API.Repositories.IRepositoriesInterface;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -11,6 +12,7 @@ namespace ASP_DOTNET_CORE_WEB_API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class PlayerDataController : ControllerBase
     {
         private readonly PlayerDBContext dbContext;

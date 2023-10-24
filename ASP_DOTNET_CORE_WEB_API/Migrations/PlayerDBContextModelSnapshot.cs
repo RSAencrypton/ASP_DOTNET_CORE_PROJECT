@@ -38,6 +38,10 @@ namespace ASP_DOTNET_CORE_WEB_API.Migrations
                     b.Property<Guid>("PlayerDataID")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("Role")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("UserAccount")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -53,17 +57,19 @@ namespace ASP_DOTNET_CORE_WEB_API.Migrations
 
             modelBuilder.Entity("ASP_DOTNET_CORE_WEB_API.Models.Domain.PersonalData", b =>
                 {
-                    b.Property<Guid>("id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("email")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("phone")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
                     b.ToTable("PersonalDatas");
                 });

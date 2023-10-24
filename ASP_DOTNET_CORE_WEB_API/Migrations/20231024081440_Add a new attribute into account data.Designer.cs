@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ASP_DOTNET_CORE_WEB_API.Migrations
 {
     [DbContext(typeof(PlayerDBContext))]
-    [Migration("20231022084307_rebuild")]
-    partial class rebuild
+    [Migration("20231024081440_Add a new attribute into account data")]
+    partial class Addanewattributeintoaccountdata
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -41,6 +41,10 @@ namespace ASP_DOTNET_CORE_WEB_API.Migrations
                     b.Property<Guid>("PlayerDataID")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("Role")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("UserAccount")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -56,17 +60,19 @@ namespace ASP_DOTNET_CORE_WEB_API.Migrations
 
             modelBuilder.Entity("ASP_DOTNET_CORE_WEB_API.Models.Domain.PersonalData", b =>
                 {
-                    b.Property<Guid>("id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("email")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("phone")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
                     b.ToTable("PersonalDatas");
                 });

@@ -76,3 +76,10 @@ D:\project\ASP_DOTNET_CORE_PROJECT\ASP_DOTNET_CORE_WEB_API\bin\Debug\net7.0\runt
 D:\project\ASP_DOTNET_CORE_PROJECT\ASP_DOTNET_CORE_WEB_API\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 D:\project\ASP_DOTNET_CORE_PROJECT\ASP_DOTNET_CORE_WEB_API\bin\Debug\net7.0\AutoMapper.dll
 D:\project\ASP_DOTNET_CORE_PROJECT\ASP_DOTNET_CORE_WEB_API\bin\Debug\net7.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+D:\project\ASP_DOTNET_CORE_PROJECT\ASP_DOTNET_CORE_WEB_API\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\project\ASP_DOTNET_CORE_PROJECT\ASP_DOTNET_CORE_WEB_API\bin\Debug\net7.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+D:\project\ASP_DOTNET_CORE_PROJECT\ASP_DOTNET_CORE_WEB_API\bin\Debug\net7.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+D:\project\ASP_DOTNET_CORE_PROJECT\ASP_DOTNET_CORE_WEB_API\bin\Debug\net7.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+D:\project\ASP_DOTNET_CORE_PROJECT\ASP_DOTNET_CORE_WEB_API\bin\Debug\net7.0\Microsoft.Extensions.Identity.Core.dll
+D:\project\ASP_DOTNET_CORE_PROJECT\ASP_DOTNET_CORE_WEB_API\bin\Debug\net7.0\Microsoft.Extensions.Identity.Stores.dll
+D:\project\ASP_DOTNET_CORE_PROJECT\ASP_DOTNET_CORE_WEB_API\bin\Debug\net7.0\Microsoft.Extensions.Options.dll

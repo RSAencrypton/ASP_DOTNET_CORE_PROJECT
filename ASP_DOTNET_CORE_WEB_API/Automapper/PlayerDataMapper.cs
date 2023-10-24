@@ -12,6 +12,7 @@ namespace ASP_DOTNET_CORE_WEB_API.Automapper
             CreateMap<AddPLayerDataDto, PlayerData>().ReverseMap();
             CreateMap<PersonalData, PersonalDataDto>().ReverseMap();
             CreateMap<AddPersonalDataDto, PersonalData>().ReverseMap();
+            CreateMap<AddAccountDto, AccountData>().ReverseMap();
         }
     }
 }

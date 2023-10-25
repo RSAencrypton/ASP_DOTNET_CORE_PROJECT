@@ -12,7 +12,7 @@ namespace ASP_DOTNET_CORE_WEB_API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+    [Authorize(Roles = "Jame")]
     public class PlayerDataController : ControllerBase
     {
         private readonly PlayerDBContext dbContext;

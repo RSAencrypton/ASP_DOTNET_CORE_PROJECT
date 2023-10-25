@@ -27,6 +27,7 @@ builder.Services.AddDbContext<GameAuthDbContext>(options => {
 builder.Services.AddScoped<IPLayerDataRepositories, PLayerDataRepository>();
 builder.Services.AddScoped<IAccountDataRepositories, AccountDataRepositories>();
 builder.Services.AddScoped<IPersonalDataRepositories, PersonalDataRepositories>();
+builder.Services.AddScoped<ITokenRepositories, TokenRepositories>();
 
 builder.Services.AddAutoMapper(typeof(PlayerDataMapper));
 

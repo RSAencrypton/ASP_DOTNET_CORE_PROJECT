@@ -1,4 +1,5 @@
 ﻿using ASP_DOTNET_CORE_WEB_API.Models.Dtos;
+using ASP_DOTNET_CORE_WEB_API.Repositories.IRepositoriesInterface;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -10,10 +11,12 @@ namespace ASP_DOTNET_CORE_WEB_API.Controllers
     public class AuthController : ControllerBase
     {
         private readonly UserManager<IdentityUser> userManager;
+        private readonly ITokenRepositories tokenRepositories;
 
-        public AuthController(UserManager<IdentityUser> userManager)
+        public AuthController(UserManager<IdentityUser> userManager, ITokenRepositories tokenRepositories)
         {
             this.userManager = userManager;
+            this.tokenRepositories = tokenRepositories;
         }
 
         [HttpPost]
@@ -26,9 +29,11 @@ namespace ASP_DOTNET_CORE_WEB_API.Controllers
             var identityResult = await userManager.CreateAsync(identityUser, registerInfo.Password);
 
             if (identityResult.Succeeded) {
-                identityResult = await userManager.AddToRoleAsync(identityUser, registerInfo.Role);
+                if (registerInfo.Role != null && registerInfo.Role.Any()) {
+                    identityResult = await userManager.AddToRolesAsync(identityUser, registerInfo.Role);
 
-                if (identityResult.Succeeded) return Ok("Create User Successfully!!!");
+                    if (identityResult.Succeeded) return Ok("Create User Successfully!!!");
+                }
             }
 
             return BadRequest("Create User Failed");
@@ -42,7 +47,16 @@ namespace ASP_DOTNET_CORE_WEB_API.Controllers
             if (user != null) {
                 bool res = await userManager.CheckPasswordAsync(user,loginInfo.LoginPassword);
 
-                if (res) return Ok("successfully log in");
+                if (res) {
+                    var roles = await userManager.GetRolesAsync(user);
+
+
+
+                    if (roles != null) {
+                        var token = tokenRepositories.CreateJWToken(user, roles.ToList());
+                        return Ok(token);
+                    }
+                }
             }
 
             return BadRequest("Wrong account name or password");

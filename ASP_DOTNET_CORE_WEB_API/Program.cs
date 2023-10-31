@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
@@ -17,6 +18,7 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddHttpContextAccessor();
 builder.Services.AddDbContext<PlayerDBContext>(options=> {
     options.UseSqlServer(builder.Configuration.GetConnectionString("GameConnectionString"));
 });
@@ -28,6 +30,7 @@ builder.Services.AddScoped<IPLayerDataRepositories, PLayerDataRepository>();
 builder.Services.AddScoped<IAccountDataRepositories, AccountDataRepositories>();
 builder.Services.AddScoped<IPersonalDataRepositories, PersonalDataRepositories>();
 builder.Services.AddScoped<ITokenRepositories, TokenRepositories>();
+builder.Services.AddScoped<IUploadImageDataRepositories, ImageRepositories>();
 
 builder.Services.AddAutoMapper(typeof(PlayerDataMapper));
 
@@ -73,6 +76,11 @@ app.UseHttpsRedirection();
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.UseStaticFiles(new StaticFileOptions {
+    FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "Image")),
+    RequestPath = "/Image"
+});
 
 app.MapControllers();
 

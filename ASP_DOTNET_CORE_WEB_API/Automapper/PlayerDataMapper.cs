@@ -13,6 +13,10 @@ namespace ASP_DOTNET_CORE_WEB_API.Automapper
             CreateMap<PersonalData, PersonalDataDto>().ReverseMap();
             CreateMap<AddPersonalDataDto, PersonalData>().ReverseMap();
             CreateMap<AddAccountDto, AccountData>().ReverseMap();
+
+            CreateMap<ImageUploadDto, ImageData>()
+                .ForMember(dest => dest.ImageExtension, opt => opt.MapFrom(src => Path.GetExtension(src.ImageFile.FileName)))
+                .ForMember(dest => dest.ImageSize, opt => opt.MapFrom(src => src.ImageFile.Length));
         }
     }
 }

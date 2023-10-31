@@ -13,5 +13,6 @@ namespace ASP_DOTNET_CORE_WEB_API.Data
         public DbSet<AccountData> AccountDatas { get; set; }
         public DbSet<PlayerData> PlayerDatas { get; set; }
         public DbSet<PersonalData> PersonalDatas { get; set; }
+        public DbSet<ImageData> imageDatas { get; set; }
     }
 }

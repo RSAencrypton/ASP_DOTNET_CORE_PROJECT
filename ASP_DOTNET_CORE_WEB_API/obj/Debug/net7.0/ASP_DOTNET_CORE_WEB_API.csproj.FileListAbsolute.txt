@@ -83,3 +83,12 @@ D:\project\ASP_DOTNET_CORE_PROJECT\ASP_DOTNET_CORE_WEB_API\bin\Debug\net7.0\Micr
 D:\project\ASP_DOTNET_CORE_PROJECT\ASP_DOTNET_CORE_WEB_API\bin\Debug\net7.0\Microsoft.Extensions.Identity.Core.dll
 D:\project\ASP_DOTNET_CORE_PROJECT\ASP_DOTNET_CORE_WEB_API\bin\Debug\net7.0\Microsoft.Extensions.Identity.Stores.dll
 D:\project\ASP_DOTNET_CORE_PROJECT\ASP_DOTNET_CORE_WEB_API\bin\Debug\net7.0\Microsoft.Extensions.Options.dll
+D:\project\ASP_DOTNET_CORE_PROJECT\ASP_DOTNET_CORE_WEB_API\bin\Debug\net7.0\Serilog.dll
+D:\project\ASP_DOTNET_CORE_PROJECT\ASP_DOTNET_CORE_WEB_API\bin\Debug\net7.0\Serilog.AspNetCore.dll
+D:\project\ASP_DOTNET_CORE_PROJECT\ASP_DOTNET_CORE_WEB_API\bin\Debug\net7.0\Serilog.Extensions.Hosting.dll
+D:\project\ASP_DOTNET_CORE_PROJECT\ASP_DOTNET_CORE_WEB_API\bin\Debug\net7.0\Serilog.Extensions.Logging.dll
+D:\project\ASP_DOTNET_CORE_PROJECT\ASP_DOTNET_CORE_WEB_API\bin\Debug\net7.0\Serilog.Formatting.Compact.dll
+D:\project\ASP_DOTNET_CORE_PROJECT\ASP_DOTNET_CORE_WEB_API\bin\Debug\net7.0\Serilog.Settings.Configuration.dll
+D:\project\ASP_DOTNET_CORE_PROJECT\ASP_DOTNET_CORE_WEB_API\bin\Debug\net7.0\Serilog.Sinks.Console.dll
+D:\project\ASP_DOTNET_CORE_PROJECT\ASP_DOTNET_CORE_WEB_API\bin\Debug\net7.0\Serilog.Sinks.Debug.dll
+D:\project\ASP_DOTNET_CORE_PROJECT\ASP_DOTNET_CORE_WEB_API\bin\Debug\net7.0\Serilog.Sinks.File.dll

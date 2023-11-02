@@ -16,11 +16,13 @@ namespace ASP_DOTNET_CORE_WEB_API.Controllers
     {
         private readonly IMapper mapper;
         private readonly IPersonalDataRepositories dataRepositories;
+        private readonly ILogger<PersonalDataController> logger;
 
-        public PersonalDataController(IMapper mapper, IPersonalDataRepositories dataRepositories)
+        public PersonalDataController(IMapper mapper, IPersonalDataRepositories dataRepositories, ILogger<PersonalDataController> logger)
         {
             this.mapper = mapper;
             this.dataRepositories = dataRepositories;
+            this.logger = logger;
         }
 
         //Get Single Player Data
@@ -29,6 +31,7 @@ namespace ASP_DOTNET_CORE_WEB_API.Controllers
         public async Task<IActionResult> GetByID([FromRoute] Guid id)
         {
             var item = dataRepositories.GetPersonalDataByID(id);
+
 
             if (item == null)
             {
